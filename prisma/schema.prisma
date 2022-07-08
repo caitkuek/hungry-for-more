@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model list {
+  list_id    Int      @id @default(autoincrement())
+  plan_id    Int?
+  produce_id Int?
+  plans      plans?   @relation(fields: [plan_id], references: [plan_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_plan")
+  produce    produce? @relation(fields: [produce_id], references: [produce_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_produce")
+}
+
+model plans {
+  plan_id         Int     @id(map: "plan_pkey") @default(autoincrement())
+  plan_name       String? @db.VarChar(144)
+  price_per_month Int?
+  list            list[]
+  users           users[]
+}
+
+model produce {
+  produce_id   Int     @id @default(autoincrement())
+  category     String? @db.VarChar(144)
+  produce_name String? @db.VarChar
+  weight       Int?
+  list         list[]
+}
+
+model users {
+  user_id     Int     @id @default(autoincrement())
+  username    String  @unique @db.VarChar(50)
+  email       String  @unique @db.VarChar(100)
+  password    String  @db.VarChar(25)
+  street_name String  @db.VarChar
+  unit_no     String? @db.VarChar
+  postal_code String  @db.VarChar(6)
+  plan_id     Int?
+  plans       plans?  @relation(fields: [plan_id], references: [plan_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_plan")
+}
