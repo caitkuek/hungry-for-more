@@ -1,5 +1,6 @@
 //* dependencies
 const express = require('express');
+const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 
 //* config
@@ -9,6 +10,7 @@ const PORT = process.env.PORT
 
 //* middleware
 app.use(express.json())
+app.use(cors())
 
 // test route
 app.get('/', (req,res) => {
