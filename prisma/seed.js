@@ -8,76 +8,91 @@ const prisma = new PrismaClient();
 // seed data
 const produceData = [
   {
+    produce_id: 1,
     category: "meat",
     produce_name: "chicken breast",
     weight: 500,
   },
   {
+    produce_id: 2,
     category: "meat",
     produce_name: "pork tenderloin fillet",
     weight: 600,
   },
   {
+    produce_id: 3,
     category: "meat",
     produce_name: "beef fillet",
     weight: 400,
   },
   {
+    produce_id: 4,
     category: "meat",
     produce_name: "chicken thigh",
     weight: 500,
   },
   {
+    produce_id: 5,
     category: "fruit",
     produce_name: "banana",
     weight: 500,
   },
   {
+    produce_id: 6,
     category: "fruit",
     produce_name: "orange",
     weight: 400,
   },
   {
+    produce_id: 7,
     category: "fruit",
     produce_name: "blueberries",
     weight: 300,
   },
   {
+    produce_id: 8,
     category: "fruit",
     produce_name: "avocado",
     weight: 400,
   },
   {
+    produce_id: 9,
     category: "vegetable",
     produce_name: "spinach",
     weight: 300,
   },
   {
+    produce_id: 10,
     category: "vegetable",
     produce_name: "corn",
     weight: 600,
   },
   {
+    produce_id: 11,
     category: "vegetable",
     produce_name: "sweet potato",
     weight: 700,
   },
   {
+    produce_id: 12,
     category: "vegetable",
     produce_name: "mushrooms",
     weight: 400,
   },
   {
+    produce_id: 13,
     category: "snack",
     produce_name: "nuts mix",
     weight: 250,
   },
   {
+    produce_id: 14,
     category: "snack",
     produce_name: "greek yogurt",
     weight: 350,
   },
   {
+    produce_id: 15,
     category: "snack",
     produce_name: "cheese crackers",
     weight: 150,
@@ -87,15 +102,18 @@ const produceData = [
 const plansData = [
     {
         plan_name: "The Hungry One",
-        price_per_month: 36
+        price_per_month: 36,
+        plan_img: "https://i.imgur.com/wPnQzBw.jpg"
     },
     {
         plan_name: "Hungry Together",
-        price_per_month: 44
+        price_per_month: 44,
+        plan_img: "https://i.imgur.com/aGEH6HA.jpg"
     },
     {
         plan_name: "Hungry Family",
-        price_per_month: 62
+        price_per_month: 62,
+        plan_img: "https://i.imgur.com/az9FWhp.jpg"
     }
 ]
 
@@ -108,13 +126,13 @@ async function main() {
     });
     console.log(`Created produce with id: ${produce.produce_id}`);
   }
-  for (const pl of plansData) {
-    //   await prisma.plans.deleteMany({});
-      const plans = await prisma.plans.create({
-          data: pl
-        });
-        console.log(`Created plan with id: ${plans.plan_id}`);
-    }
+  // for (const pl of plansData) {
+  //   //   await prisma.plans.deleteMany({});
+  //     const plans = await prisma.plans.create({
+  //         data: pl
+  //       });
+  //       console.log(`Created plan with id: ${plans.plan_id}`);
+  //   }
     console.log(`Seeding finished.`);
 }
 

@@ -1,8 +1,12 @@
 <template>
-  <div class="home">
-    <img id="homeimg" src="https://i.imgur.com/O0lIowh.jpg?1" alt="cover" />
-    <h1 id="title">Hungry for More</h1>
-    <div>bella, where the hell have you been loca {{ produce.data }} </div>
+  <div>
+      <div class="home-header">
+        <img id="homeimg" src="https://i.imgur.com/O0lIowh.jpg?1" alt="cover" />
+         <h1 id="title">Hungry for More</h1>
+      </div>
+    <div>
+        bella, where the hell have you been loca {{ plans.data }} 
+    </div>   
   </div>
 </template>
 
@@ -11,21 +15,23 @@ import axios from 'axios';
 
 export default {
   name: "Home",
+  // data to be used on Home
   data() {
       return {
-          produce: []
+          plans: []
       }
   },
+  // using axios to fetch data hehe
     mounted () {
     axios
-      .get('http://localhost:8000/produce/')
-      .then(response => (this.produce = response))
+      .get('http://localhost:8000/plans/')
+      .then(response => (this.plans = response))
   }
 };
 </script>
 
 <style>
-.home {
+.home-header {
     position: relative;
     text-align: center;
 }

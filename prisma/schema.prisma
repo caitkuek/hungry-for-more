@@ -19,6 +19,7 @@ model plans {
   plan_id         Int     @id(map: "plan_pkey") @default(autoincrement())
   plan_name       String? @db.VarChar(144)
   price_per_month Int?
+  plan_img        String? @db.VarChar
   list            list[]
   users           users[]
 }
