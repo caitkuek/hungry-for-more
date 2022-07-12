@@ -17,6 +17,8 @@ app.get('/', (req,res) => {
     res.send("welcome to the backrooms")
 });
 
+//* PLANS AND PRODUCE
+
 // READ plans
 app.get('/plans', async (req,res) => {
     const plans = await prisma.plans.findMany();
@@ -41,6 +43,56 @@ app.get('/produce/:id', async (req,res) => {
         res.send(error);
     }
 });
+
+//* USERS!
+
+// one user
+app.get('/users/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await prisma.users.findUnique({
+            where: { user_id: Number(id) },
+        })
+        res.send(user);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+// CREATE user
+app.post("/signup", async (req, res) => {
+    const {
+      username,
+      password,
+      email,
+      street_name,
+      unit_no,
+      postal_code,
+    } = req.body;
+    console.log(req.body);
+    const duplicateUser = await prisma.users.findUnique({ 
+        where: {username: String(username)}, 
+    });
+    if (!duplicateUser) {
+      try {
+        const createUser = await prisma.users.create({ 
+            data: {
+              username,
+              password,
+              email,
+              street_name,
+              unit_no,
+              postal_code
+            },
+         });
+        res.send({ status: "success", data: createUser})
+      } catch (error) {
+        res.send({ status: "fail", data: "something went wrong"});
+      }
+    } else {
+      res.send("username taken");
+    }
+  });
 
 // please listen!!! 
 app.listen(PORT, () => {
