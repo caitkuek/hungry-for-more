@@ -1,6 +1,6 @@
 <template>
     <div class="trending-plans-container">
-        <h2>Trending plans</h2>
+        <h2>Most popular plans</h2>
         <div :key="plans.plan_id" v-for="plan in plans">
             <TrendingPlansCard :plan="plan"/>
         </div>
