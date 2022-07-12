@@ -1,6 +1,7 @@
 //* dependencies
 const express = require('express');
 const cors = require('cors');
+const session = require("express-session");
 const { PrismaClient } = require('@prisma/client');
 
 //* config
@@ -11,6 +12,13 @@ const PORT = process.env.PORT
 //* middleware
 app.use(express.json())
 app.use(cors())
+app.use(
+    session({
+      secret: "keyboard cat",
+      resave: false,
+      saveUninitialized: true,
+    })
+);
 
 // test route
 app.get('/', (req,res) => {
@@ -59,7 +67,7 @@ app.get('/users/:id', async (req, res) => {
     }
 });
 
-// CREATE user
+// CREATE - user signup
 app.post("/signup", async (req, res) => {
     const {
       username,
@@ -93,6 +101,25 @@ app.post("/signup", async (req, res) => {
       res.send("username taken");
     }
   });
+
+// CREATE - user login
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    console.log(req.body);
+    const userLogin = await prisma.users.findUnique({ 
+        where: { username: String(username) } 
+    });
+    if (userLogin === null) {
+        res.send({ status: "fail", data: "Username not found :(" });
+    } else {
+        if (password === userLogin.password) {
+            req.session.user = userLogin;
+            res.send({ status: "success", data: userLogin });
+        } else {
+            res.send({status: "error", data: "password fail"});
+        }
+    }
+});
 
 // please listen!!! 
 app.listen(PORT, () => {
