@@ -3,6 +3,7 @@ import Home from "../views/Home"
 import Login from "../views/Login"
 import Signup from "../views/Signup"
 import Plans from "../views/Plans"
+import About from "../views/About"
 
 // route creation
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
         path: '/plans',
         name: 'Plans',
         component: Plans
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
     }
 ]
 

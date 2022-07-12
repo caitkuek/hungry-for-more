@@ -117,14 +117,36 @@ const plansData = [
     }
 ]
 
+const listData = [
+  {
+    list_id: 1,
+    Plans: {
+      plan_id: 1
+    },
+    Produce: {
+      produce: 1
+    },
+    include:{
+      Plans: true,
+      Produce: true
+    },
+  }
+]
+
 async function main() {
   console.log(`Start seeding ...`);
-  for (const p of produceData) {
-    // await prisma.produce.deleteMany({});
-    const produce = await prisma.produce.create({
-      data: p,
-    });
-    console.log(`Created produce with id: ${produce.produce_id}`);
+  // for (const p of produceData) {
+  //   // await prisma.produce.deleteMany({});
+  //   const produce = await prisma.produce.create({
+  //     data: p,
+  //   });
+  //   console.log(`Created produce with id: ${produce.produce_id}`);
+  // }
+  for (const l of listData) {
+    const list = await prisma.list.create({
+      data: l,
+    })
+    console.log(`Created list with id: ${list.list_id}`);
   }
   // for (const pl of plansData) {
   //   //   await prisma.plans.deleteMany({});

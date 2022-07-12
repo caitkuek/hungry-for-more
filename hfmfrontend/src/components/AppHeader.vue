@@ -1,7 +1,8 @@
 <template>
     <header>
         <router-link to="/">
-            <img id="logo" src="https://i.imgur.com/iFP0YlT.png" alt="logo" />
+            <!-- <img id="logo" src="https://i.imgur.com/iFP0YlT.png" alt="logo" /> -->
+            <h3>hungry for more</h3>
         </router-link>
         <router-link to="/about">about</router-link>
         <router-link to="/plans">plans</router-link>
