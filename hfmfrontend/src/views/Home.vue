@@ -4,17 +4,19 @@
         <img id="homeimg" src="https://i.imgur.com/O0lIowh.jpg?1" alt="cover" />
          <h1 id="title">Hungry for More</h1>
       </div>
-    <div>
-        bella, where the hell have you been loca {{ plans.data }} 
-    </div>   
+    <TrendingPlans :plans="plans" /> 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import TrendingPlans from '../components/TrendingPlans'
 
 export default {
   name: "Home",
+  components: {
+      TrendingPlans,
+  },
   // data to be used on Home
   data() {
       return {
@@ -22,10 +24,10 @@ export default {
       }
   },
   // using axios to fetch data hehe
-    mounted () {
-    axios
+    async created () {
+    await axios
       .get('http://localhost:8000/plans/')
-      .then(response => (this.plans = response))
+      .then(response => (this.plans = response.data))
   }
 };
 </script>
@@ -39,11 +41,11 @@ export default {
 #title {
   position: absolute;
   bottom: 50px;
-  left: 375px;
+  left: 32rem;
 }
 
 #homeimg {
-  max-width: 60%;
+  max-width: 50%;
   max-height: auto;
 }
 </style>
