@@ -10,6 +10,8 @@ Made because I love groceries and convenience.
 - Express
 - Node.js
 - Vue
+- Prisma
+- Axios
 
 ### App structure
 u know i love my trees (tbc)
