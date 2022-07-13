@@ -22,7 +22,7 @@ Less is more lmao. Feel free to take a look at my drafts:
 
 
 ## WIP
-Things I would like to add at my own time and pace and when GA is not breathing down my neck:
+Things I would like to add at my own time and pace:
 - Recipe section for users to post their own recipes for the things they receive - like their own archive kinda thing
 - Fancy Add to Cart feature with the basket and everything
 
