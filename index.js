@@ -28,6 +28,20 @@ app.get("/", (req, res) => {
 
 //* PLANS AND PRODUCE
 
+// READ one plan
+app.get("/plans/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const onePlan = await prisma.plans.findUnique({
+      where: {plan_id: Number(id) },
+    });
+    console.log(onePlan)
+    res.send(onePlan);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 // READ plans
 app.get("/plans", async (req, res) => {
   const plans = await prisma.plans.findMany();
@@ -104,6 +118,7 @@ app.get("/list/:id", async (req, res) => {
     foodName.push(retrieveProduces[0])
     // res.send(retrieveProduceID)
 }
+res.send(foodName)
 console.log(foodName)
 })
 

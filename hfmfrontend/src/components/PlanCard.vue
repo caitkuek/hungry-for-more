@@ -4,7 +4,6 @@
       <img class="plan-img" :src="plan.plan_img" />
       <h3>{{ plan.plan_name }}</h3>
       <h4>${{ plan.price_per_month }}/month</h4>
-      <!-- <router-link to="/plans/:id"><button>More details</button></router-link> -->
       <router-link class="link" :to="{ name:'PlanDisplay', params: {id: plan.plan_id} }">More Details</router-link>
     </div>
   </div>
