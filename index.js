@@ -125,7 +125,7 @@ console.log(foodName)
 //* USERS!
 
 // READ one user
-app.get("/users/:id", async (req, res) => {
+app.get("/login/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const user = await prisma.users.findUnique({

@@ -49,12 +49,6 @@ export default {
       users: [],
     };
   },
-  // async created() {
-  //   await axios
-  //   .get(`http://localhost:8000/users/${id}`)
-  //   .then((response) => (this.users = response.data))
-  //   console.log(this.users.user_id)
-  // },
   methods: {
    async onSubmit(e) {
       e.preventDefault();
@@ -68,14 +62,16 @@ export default {
 
       const res = await axios
       .post('http://localhost:8000/login', body)
-      .then(res => res.data.body);
-
+      .then((res) => (this.users = res.data))
+        
         this.success = true;
-        // this.error = err.message;
+        console.log("login hi", res.data.user_id )
+
       if (this.success === true) {
-        this.$router.push({ path: '/'})
-      }
-    },
+        this.$router.push({ name: 'UserProfile', params: { id: res.data.user_id } })
+
+    }
   },
+},
 };
 </script>
