@@ -48,16 +48,6 @@ export default {
   methods: {
    async onSubmit(e) {
       e.preventDefault();
-
-  //     try {
-  //       const body = { username, email }
-  //       await axios
-  //       .post('http://localhost:8000/login', { body })
-  //     }
-  //     await router.push('/')
-  // } catch (error) {
-  //   console.log(error)
-  // }
       const body = {
         username: this.username,
         password: this.password,

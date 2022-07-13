@@ -171,6 +171,19 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//* if i have time - authorization 
+const isLoggedIn = (req, res, next) => {
+    if (req.session.user) {
+        return next();
+    } else {
+        res.send({ status: "error", data: "login fail"})
+    }
+}
+
+app.get("/authorized", isLoggedIn, (req, res) => {
+    res.send(req.session.user)
+})
+
 // please listen!!!
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);

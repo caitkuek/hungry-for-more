@@ -73,23 +73,45 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Signup",
   data() {
       return {
-          username: ' ',
-          password: ' ',
-          email: ' ',
-          street_name: ' ',
-          unit_no: ' ',
-          postal_code: ' '
-      }
+          username: '',
+          password: '',
+          email: '',
+          street_name: '',
+          unit_no: '',
+          postal_code: '',
+          error: null,
+          success: false
+      };
   },
   methods: {
-      onSubmit(e) {
+      async onSubmit(e) {
           e.preventDefault();
-          
-          console.log('submit!')
+          const body = {
+            username: this.username,
+            password: this.password,
+            email: this.email,
+            street_name: this.street_name,
+            unit_no: this.unit_no,
+            postal_code: this.postal_code
+          };
+
+          this.success = false;
+          this.error = null;
+
+          const res = await axios
+          .post('http://localhost:8000/signup', body)
+          .then(res => res.data.body);
+
+          this.success = true;
+
+          if (this.success === true) {
+            this.$router.push({path: '/'})
+          }
       }
   }
 };
