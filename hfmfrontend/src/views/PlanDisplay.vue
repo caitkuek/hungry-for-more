@@ -1,7 +1,7 @@
 <template>
   <div class="plans">
     {{ this.id }}
-    <router-link :to="{ name: 'Plans' }"><button>Go back</button></router-link>
+    <router-link :to="{ name: 'Plans' }"><button>&lt;</button></router-link>
     <h2>{{ plans.plan_name }}</h2>
     <h3>What you'll receive:</h3>
     <div :key="produce.produce_id" v-for="produce in produce">
@@ -31,12 +31,12 @@ export default {
     await axios
       .get(`http://localhost:8000/plans/${this.id}`)
       .then((response) => (this.plans = response.data));
-    console.log(this.plans);
+    // console.log(this.plans);
 
     await axios
       .get(`http://localhost:8000/list/${this.id}/`)
       .then((response) => (this.produce = response.data));
-    console.log(this.produce[1].produce_name);
+    // console.log(this.produce[1].produce_name);
   },
 };
 </script>

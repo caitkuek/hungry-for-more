@@ -81,7 +81,6 @@ app.get("/produce/:id", async (req, res) => {
 //         }
 //     } },
 //   });
-//   // const produceArr = []
 //   for (let i = 0; i < oneList.length; i++) {
 //     let produceID = oneList[i].produce_id;
 //     await prisma.produce.findMany({
@@ -125,7 +124,7 @@ console.log(foodName)
 
 //* USERS!
 
-// one user
+// READ one user
 app.get("/users/:id", async (req, res) => {
   const { id } = req.params;
   try {

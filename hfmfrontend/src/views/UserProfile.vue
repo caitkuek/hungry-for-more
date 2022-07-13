@@ -1,9 +1,15 @@
 <template>
   <div class="userpage">
-    <h2>username's page</h2>
+    <h2>{{users.username}}'s page</h2>
     <div>
-      <h3>your plans</h3>
-      you don't have any plans
+      <h3>{{users.username}}'s plans</h3>
+      <p>you don't have any plans LOL</p>
+    </div>
+    <div>
+        <h3>{{users.username}}'s delivery address</h3>
+        <p>Street name: {{users.street_name}}</p>
+        <p>Unit no.: #{{users.unit_no}}</p>
+        <p>Postal code: {{users.postal_code}}</p>
     </div>
   </div>
 </template>
@@ -12,35 +18,21 @@
 import axios from "axios";
 export default {
   name: "UserProfile",
+  props: {
+      id: {type: Number, required: true},
+  },
   data() {
     return {
-      loading: false,
-      user: null,
-      error: null,
+        users: []
     };
   },
-//   created() {
-//     this.$watch(
-//       () => this.$route.params,
-//       () => {
-//         this.fetchData();
-//       },
-//       { immediate: true }
-//     );
-//   },
-//   methods: {
-//     async fetchData() {
-//       this.error = this.user = null;
-//       this.loading - true;
-//       await axios.get(this.$route.params.id, (err, users) => {
-//         this.loading = false;
-//         if (err) {
-//           this.error = err.toString();
-//         } else {
-//           this.user = user;
-//         }
-//       });
-//     },
-//   },
-};
+  async created() {
+      const id = this.$route.params.id
+      console.log("created", id)
+      await axios
+      .get(`http://localhost:8000/users/${id}`)
+      .then((response) => (this.users = response.data))
+      console.log(this.users)
+  },
+}
 </script>

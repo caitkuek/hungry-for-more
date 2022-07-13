@@ -37,14 +37,24 @@
 import axios from 'axios'
 export default {
   name: "Login",
+  // props: {
+  //   id: {type: Number, required: true},
+  // },
   data() {
     return {
       username: "",
       password: "",
       error: null,
-      success: false
+      success: false,
+      users: [],
     };
   },
+  // async created() {
+  //   await axios
+  //   .get(`http://localhost:8000/users/${id}`)
+  //   .then((response) => (this.users = response.data))
+  //   console.log(this.users.user_id)
+  // },
   methods: {
    async onSubmit(e) {
       e.preventDefault();
@@ -63,7 +73,7 @@ export default {
         this.success = true;
         // this.error = err.message;
       if (this.success === true) {
-        this.$router.push({path: '/' })
+        this.$router.push({ path: '/'})
       }
     },
   },
