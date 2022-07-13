@@ -9,7 +9,7 @@
         <li>{{ produce.weight }}g of {{ produce.produce_name }}</li>
       </ul>
     </div>
-    <button>This is the plan for me!</button>
+    <button>This is the plan for me! [add to user!!!]</button>
   </div>
 </template>
 

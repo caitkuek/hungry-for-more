@@ -1,24 +1,29 @@
 <template>
   <div class="userpage">
-    <h2>{{users.username}}'s page</h2>
+    <h2>My account</h2>
     <div>
       <h3>{{users.username}}'s plans</h3>
       <p>you don't have any plans LOL</p>
+      <router-link to="/plans"><button>add plans</button></router-link>
     </div>
     <div>
         <h3>{{users.username}}'s delivery address</h3>
         <p>
             Street name: {{users.street_name}} 
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <button>Edit</button>
         </p>
         <p>
-            Unit no.: #{{users.unit_no}} 
-            <i class="fa-solid fa-pen-to-square"></i>
+            Unit no: #{{users.unit_no}} 
+            <button>Edit</button>
         </p>
         <p>
             Postal code: {{users.postal_code}} 
-            <i class="fa-light fa-pen"></i>
+            <button>Edit</button>
         </p>
+    </div>
+    <div>
+        I am tired
+        <button>I quit!</button>
     </div>
   </div>
 </template>
@@ -36,6 +41,7 @@ export default {
         login: [],
     };
   },
+  methods: {
   async created() {
       const id = this.$route.params.id
       console.log("created", id)
@@ -43,8 +49,14 @@ export default {
       .get(`http://localhost:8000/login/${id}`)
       .then((response) => (this.users = response.data))
       console.log(this.users)
-
-    //   this.login = await this.getLogin();
-  },
+    },
+    async deleteUser(id) {
+        if(confirm('are you sure? :(')) {
+            const res = await axios
+            .delete(`http://localhost:8000/users/${id}`)
+            
+        }
+    }
+  }
 }
 </script>

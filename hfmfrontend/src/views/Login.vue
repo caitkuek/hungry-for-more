@@ -69,7 +69,8 @@ export default {
 
       if (this.success === true) {
         this.$router.push({ name: 'UserProfile', params: { id: res.data.user_id } })
-
+        //* alt route
+        // this.$router.push({ path: `/users/${res.data.user_id}` }) 
     }
   },
 },

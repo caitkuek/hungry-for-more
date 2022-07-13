@@ -198,6 +198,40 @@ app.get("/authorized", isLoggedIn, (req, res) => {
     res.send(req.session.user)
 })
 
+app.put("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const {
+    street_name,
+    unit_no,
+    postal_code
+  } = req.body
+  try{
+  const userUpd = await prisma.users.update({
+    where: { 
+      user_id: Number(id) 
+    },
+    data: {
+      street_name: String(street_name),
+      unit_no: String(unit_no),
+      postal_code: String(postal_code),
+    }
+  })
+  res.send({status: "success", data: userUpd})
+} catch (error) {
+  res.send({status: "fail", data: "could not update"})
+}
+})
+
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const userToDelete = await prisma.users.delete({
+    where: {
+      user_id: Number(id),
+    },
+  })
+  res.send(userToDelete)
+})
+
 // please listen!!!
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
