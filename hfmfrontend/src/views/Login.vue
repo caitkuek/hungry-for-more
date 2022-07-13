@@ -5,8 +5,9 @@
       <div class="login-container">
         <input
           class="login-input"
-          name="username"
           type="text"
+          v-model="username"
+          name="username"
           placeholder="Username"
         />
         <label class="login-label" htmlFor="Username"> Username </label>
@@ -14,8 +15,9 @@
       <div class="login-container">
         <input
           class="login-input"
-          name="password"
           type="password"
+          v-model="password"
+          name="password"
           placeholder="Password"
         />
         <label class="login-label" htmlFor="Password"> Password </label>
@@ -32,19 +34,47 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Login",
   data() {
     return {
-      username: " ",
-      password: " ",
+      username: "",
+      password: "",
+      error: null,
+      success: false
     };
   },
   methods: {
-    onSubmit(e) {
+   async onSubmit(e) {
       e.preventDefault();
 
-      console.log("submit!");
+  //     try {
+  //       const body = { username, email }
+  //       await axios
+  //       .post('http://localhost:8000/login', { body })
+  //     }
+  //     await router.push('/')
+  // } catch (error) {
+  //   console.log(error)
+  // }
+      const body = {
+        username: this.username,
+        password: this.password,
+      };
+
+      this.success = false;
+      this.error = null;
+
+      const res = await axios
+      .post('http://localhost:8000/login', body)
+      .then(res => res.data.body);
+
+        this.success = true;
+        // this.error = err.message;
+      if (this.success === true) {
+        this.$router.push({path: '/' })
+      }
     },
   },
 };

@@ -4,6 +4,8 @@ import Login from "../views/Login"
 import Signup from "../views/Signup"
 import Plans from "../views/Plans"
 import About from "../views/About"
+import UserProfile from "../views/UserProfile"
+import PlanDisplay from "../views/PlanDisplay"
 
 // route creation
 const routes = [
@@ -28,9 +30,21 @@ const routes = [
         component: Plans
     },
     {
+        path: '/plans/:id',
+        name: 'PlanDisplay',
+        component: PlanDisplay,
+        props: (route) => ({ id: parseInt(route.params.id) }),
+    },
+    {
         path: '/about',
         name: 'About',
         component: About
+    },
+    {
+        path: '/user/:id',
+        name: 'UserProfile',
+        component: UserProfile,
+        props: (route) => ({ id: parseInt(route.params.id) }), // parseInt to make number
     }
 ]
 

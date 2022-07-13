@@ -7,6 +7,8 @@
         <router-link to="/about">about</router-link>
         <router-link to="/plans">plans</router-link>
         <router-link to="/login">login</router-link>
+        <router-link :to="{ name:'UserProfile', params: {id: 1} }">profile</router-link>
+        <!-- fetch id from login when username = user.username -->
     </header>
 </template>
 
