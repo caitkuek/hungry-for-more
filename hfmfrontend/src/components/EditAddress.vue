@@ -18,7 +18,6 @@ import axios from 'axios';
 export default {
   name: "EditAddress",
   props: ["users"],
-  components: {},
   data() {
     return {
       edited: true,

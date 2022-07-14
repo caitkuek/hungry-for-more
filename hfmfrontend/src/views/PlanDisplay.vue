@@ -1,36 +1,38 @@
 <template>
   <div class="plans">
-    {{ this.id }}
+    <!-- {{ this.id }} -->
     <router-link :to="{ name: 'Plans' }"><button>&lt;</button></router-link>
+    <div class="plan-detail-header">
+    <img class="plan-img" :src="plans.plan_img" />
     <h2>{{ plans.plan_name }}</h2>
+    </div>
     <h3>What you'll receive:</h3>
     <div :key="produce.produce_id" v-for="produce in produce">
       <ul>
         <li>{{ produce.weight }}g of {{ produce.produce_name }}</li>
       </ul>
     </div>
-    <button>This is the plan for me! [add to user!!!]</button>
+    <!-- <AddPlan :plans="plans" /> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import AddPlan from "../components/AddPlan"
 
 export default {
   name: "PlanDisplay",
   props: {
     id: { type: Number, required: true },
   },
+  components: {
+    AddPlan
+  },
   data() {
     return {
       produce: [],
       plans: [],
     };
-  },
-  methods: {
-    async addTask(task) {
-      await axios
-    }
   },
   async created() {
     await axios
