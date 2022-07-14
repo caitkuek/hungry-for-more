@@ -1,5 +1,8 @@
 <template>
+<div>
+<h1>All Plans</h1>
 <PlanCard :plans="plans" />
+</div>
 </template>
 
 <script>
