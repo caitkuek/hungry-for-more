@@ -1,13 +1,24 @@
 <template>
   <div class="userpage">
-    <h2>My account</h2>
-    <div>
+    <h2>Your Account Details</h2>
+    <div class="user-header">
+      <div class="username-div">
+      <h3>
+        Username
+        </h3> 
+      <p>: {{users.username}}</p>
+      </div>
+      <div class="email-div">
+      <h3>Email</h3> 
+      <p>: {{users.email}}</p>
+      </div>
+    </div>
+    <!-- <div>
       <h3>{{users.username}}'s plans</h3>
       <p>you don't have any plans LOL</p>
       <router-link to="/plans"><button>add plans</button></router-link>
-    </div>
+    </div> -->
     <div>
-        <h3>{{users.username}}'s delivery address</h3>
         <EditAddress :users="users" :key="users.user_id"/>
     </div>
     <div>
@@ -56,3 +67,23 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.user-header {
+  /* background-color: #99AFB5; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.username-div, .email-div {
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+</style>
