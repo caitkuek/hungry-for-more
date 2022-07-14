@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="home">
       <div class="home-header">
-        <img id="homeimg" src="https://i.imgur.com/O0lIowh.jpg?1" alt="cover" />
+        <img id="homeimg" src="https://i.imgur.com/lh1ZBbB.jpg" alt="cover" />
          <h1 id="title">Hungry for More</h1>
       </div>
     <TrendingPlans :plans="plans" /> 
@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style>
+.home {
+  padding-top: 10px;
+}
+
 .home-header {
     position: relative;
     text-align: center;
@@ -40,12 +44,12 @@ export default {
 
 #title {
   position: absolute;
-  bottom: 50px;
-  left: 32rem;
+  bottom: 40px;
+  left: 23rem;
 }
 
 #homeimg {
-  max-width: 50%;
+  max-width: 60%;
   max-height: auto;
 }
 </style>

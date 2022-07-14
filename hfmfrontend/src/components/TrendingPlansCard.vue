@@ -1,8 +1,8 @@
 <template>
     <div class="trendingplans-card">
         <img class="plan-img" :src="plan.plan_img"/>
-        <h3>{{ plan.plan_name }}</h3>
-        <h4>${{ plan.price_per_month }}/month</h4>
+        <h3 id="plan-name">{{ plan.plan_name }}</h3>
+        <h4>estimated cost of ${{ plan.price_per_month }}/month</h4>
     </div>
 </template>
 

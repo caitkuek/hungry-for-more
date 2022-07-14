@@ -7,7 +7,7 @@
     </router-link>
     <router-link to="/about">about</router-link>
     <router-link to="/plans">plans</router-link>
-    <router-link to="/login">login</router-link>
+    <router-link id="login-route" to="/login">login</router-link>
     <!-- <div v-if="$route.name === '/login'">
          <router-link to="/login">login</router-link>
         </div>
@@ -16,6 +16,7 @@
         </div> -->
     <!-- fetch id from login when username = user.username -->
     </nav>
+    <hr>
   </header>
 </template>
 
@@ -62,4 +63,18 @@ nav a:hover {
   text-decoration: underline;
 }
 
+hr {
+  max-width: 85rem;
+  /* padding-bottom: 30px; */
+}
+
+#login-route {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  padding: 75px;
+  /* margin-top: 10px;
+  margin-left: 45rem; */
+  /* max-height: 30px; */
+}
 </style>
