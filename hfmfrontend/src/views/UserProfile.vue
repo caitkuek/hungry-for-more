@@ -22,26 +22,28 @@
         </p>
     </div>
     <div>
-        I am tired
-        <button>I quit!</button>
+        <Delete @delete-user="deleteUser" :users="users" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Delete from "../components/Delete"
+
 export default {
   name: "UserProfile",
   props: {
       id: {type: Number, required: true},
   },
+  components: {
+      Delete,
+  },
   data() {
     return {
         users: [],
-        login: [],
     };
   },
-  methods: {
   async created() {
       const id = this.$route.params.id
       console.log("created", id)
@@ -50,13 +52,16 @@ export default {
       .then((response) => (this.users = response.data))
       console.log(this.users)
     },
-    async deleteUser(id) {
-        if(confirm('are you sure? :(')) {
-            const res = await axios
-            .delete(`http://localhost:8000/users/${id}`)
-            
-        }
-    }
-  }
+    methods: {
+    deleteUser(id) {
+      if (confirm("are you sure? :(")) {
+        const res = axios
+        .delete(`http://localhost:8000/users/${id}`)
+        .then(res => console.log(res))
+        // .then((res) ? (this.users = this.users.filter((user) => user.user_id !== id)) : alert('error deleting'))
+        this.$router.push({path: '/'})
+      }
+    },
+  },
 }
 </script>

@@ -69,27 +69,7 @@ app.get("/produce/:id", async (req, res) => {
 
 //* TO FETCH LIST ITEMS IN PLAN
 
-// get one plan list & use this to get produce hehe
-// app.get("/list/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const oneList = await prisma.list.findMany({
-//     where: { plans : {
-//         one: {
-//             plans: {
-//                 id
-//             }
-//         }
-//     } },
-//   });
-//   for (let i = 0; i < oneList.length; i++) {
-//     let produceID = oneList[i].produce_id;
-//     await prisma.produce.findMany({
-//       where: { produce_id: Number(produceID) },
-//     });
-//     console.log("produceID", produceID);
-//   }
-// });
-
+// get one plan list & use this to get produce 
 app.get("/list/:id", async (req, res) => {
     const { id } = req.params; 
     const retrieveProduceID = await prisma.list.findMany({
@@ -120,7 +100,6 @@ app.get("/list/:id", async (req, res) => {
 res.send(foodName)
 console.log(foodName)
 })
-
 
 //* USERS!
 
@@ -198,12 +177,14 @@ app.get("/authorized", isLoggedIn, (req, res) => {
     res.send(req.session.user)
 })
 
+// UPDATE user adddress info & plans
 app.put("/users/:id", async (req, res) => {
   const { id } = req.params;
   const {
     street_name,
     unit_no,
-    postal_code
+    postal_code,
+    plan_id
   } = req.body
   try{
   const userUpd = await prisma.users.update({
@@ -214,6 +195,7 @@ app.put("/users/:id", async (req, res) => {
       street_name: String(street_name),
       unit_no: String(unit_no),
       postal_code: String(postal_code),
+      plan_id: Number(plan_id)
     }
   })
   res.send({status: "success", data: userUpd})
@@ -222,6 +204,36 @@ app.put("/users/:id", async (req, res) => {
 }
 })
 
+// retrieve plan info from users
+// app.get("/user/:id", async (req, res) => {
+//   const { id } = req.params; 
+//   // const { plan_id } = req.body;
+//   const retrievePlanID = await prisma.users.findUnique({
+//       where: {
+//                   user_id: Number(id),
+//               },
+//           })
+      
+  
+//   console.log(req.params.id)
+//   console.log(retrievePlanID)
+//   res.send(retrievePlanID)
+
+//   const foodName = []
+//   for (let i = 0; i < retrieveProduceID.length; i ++) {
+//       let produceID  = retrieveProduceID[i].produce_id
+//       // console.log(produceID)
+//       const retrieveProduces = await prisma.produce.findMany({
+//           where: { produce_id: Number(produceID)}
+//   });
+//   foodName.push(retrieveProduces[0])
+//   // res.send(retrieveProduceID)
+// }
+// res.send(foodName)
+// console.log(foodName)
+// });
+
+// DELETE user
 app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
   const userToDelete = await prisma.users.delete({
