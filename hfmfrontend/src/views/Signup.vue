@@ -126,27 +126,11 @@ export default {
     align-items: center;
 }
 
-.signup-form {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .signup {
     width: 500px;
     border-radius: 8px;
     padding: 20px 40px;
     /* box-shadow: 0 10px 25px rgba(92, 99, 105, .2); */
-}
-
-.signup h2 {
-    font-size: 40px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .signup-container {
