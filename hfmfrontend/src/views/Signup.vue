@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="signup-page">
     <form @submit="onSubmit" class="signup">
-      <h2>Signup</h2>
+      <h3>Signup</h3>
       <div class="signup-container">
         <input
           required
@@ -63,10 +63,11 @@
       </div>
       <button class="signup-button">Create an account!</button>
       <div class="login-redirect">
-        <h4>Already have an account?</h4>
+        <h4>Already have an account?
         <router-link id="login-redirect-link" to="/login">
-          <button class="login-redirect-button">Login instead!</button>
+        Login instead!
         </router-link>
+        </h4>
       </div>
     </form>
   </div>
@@ -116,3 +117,138 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.signup-page {
+   /* padding-top: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup {
+    width: 500px;
+    border-radius: 8px;
+    padding: 20px 40px;
+    /* box-shadow: 0 10px 25px rgba(92, 99, 105, .2); */
+}
+
+.signup h2 {
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-container {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+.signup-input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #DADCE0;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+}
+
+::placeholder {
+    color: transparent;
+  }
+
+.signup-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 0 4px;
+    background-color: white;
+    color: #DADCE0;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 0;
+  }
+
+.signup-button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #5864A0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.signup-button:hover {
+    background-color: #6871a1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  transform: translateY(-1px);
+}
+
+.signup-input:focus + .signup-label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+    color: #467599;
+  }
+
+.signup-input:focus {
+    border: 2px solid #467599;
+  }
+
+.signup-input:not(:placeholder-shown)+ .signup-label {
+    top: -7px;
+    left: 3px;
+    z-index: 10;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+#login-redirect-link {
+  color: #2B363D;
+  text-decoration: none;
+}
+
+#login-redirect-link:hover {
+  color: #5864A0;
+  text-decoration: underline;
+}
+</style>

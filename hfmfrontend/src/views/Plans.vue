@@ -1,6 +1,7 @@
 <template>
-<div>
-<h1>All Plans</h1>
+<div class="plans"> 
+  <img id="homeimg" src="https://i.imgur.com/lh1ZBbB.jpg" alt="cover" />
+<h2>All Plans</h2>
 <PlanCard :plans="plans" />
 </div>
 </template>
@@ -26,3 +27,15 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.plans {
+  padding-top: 10px;
+}
+
+h2 {
+  position: absolute;
+  bottom: 140px;
+  left: 23rem;
+}
+</style>

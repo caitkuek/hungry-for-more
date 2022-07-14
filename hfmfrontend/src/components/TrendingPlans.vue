@@ -69,7 +69,6 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  /* font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif; */
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
