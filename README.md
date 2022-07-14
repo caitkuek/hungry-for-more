@@ -16,12 +16,41 @@ Made because I love groceries and convenience.
 ### App structure
 Frontend (Vue)
 ```
-code
+├── App.vue
+├── assets
+│   └── logo.png
+├── components
+│   ├── AddPlan.vue
+│   ├── AppHeader.vue
+│   ├── Delete.vue
+│   ├── DeleteButton.vue
+│   ├── EditAddress.vue
+│   ├── PlanCard.vue
+│   ├── TrendingPlans.vue
+│   └── TrendingPlansCard.vue
+├── main.js
+├── router
+│   └── index.js
+└── views
+    ├── About.vue
+    ├── Home.vue
+    ├── Login.vue
+    ├── PlanDisplay.vue
+    ├── Plans.vue
+    ├── Signup.vue
+    └── UserProfile.vue
 ```
 
-Backend (Express + Prisma)
+Prisma
 ```
-code
+├── migrations
+│   ├── 20220708065910_introspected_change
+│   │   └── migration.sql
+│   ├── 20220710141853_introspected_change
+│   │   └── migration.sql
+│   └── migration_lock.toml
+├── schema.prisma
+└── seed.js
 ```
 
 ## Wireframe
