@@ -8,18 +8,7 @@
     </div>
     <div>
         <h3>{{users.username}}'s delivery address</h3>
-        <p>
-            Street name: {{users.street_name}} 
-            <button>Edit</button>
-        </p>
-        <p>
-            Unit no: #{{users.unit_no}} 
-            <button>Edit</button>
-        </p>
-        <p>
-            Postal code: {{users.postal_code}} 
-            <button>Edit</button>
-        </p>
+        <EditAddress :users="users" :key="users.user_id"/>
     </div>
     <div>
         <Delete @delete-user="deleteUser" :users="users" />
@@ -30,6 +19,7 @@
 <script>
 import axios from "axios";
 import Delete from "../components/Delete"
+import EditAddress from "../components/EditAddress"
 
 export default {
   name: "UserProfile",
@@ -38,6 +28,7 @@ export default {
   },
   components: {
       Delete,
+      EditAddress,
   },
   data() {
     return {
@@ -53,6 +44,11 @@ export default {
       console.log(this.users)
     },
     methods: {
+    async editName(id) {
+      const res = await axios
+      .put(`http://localhost:8000/users/${id}`)
+      then(res => this.users = res.data)
+    },
     deleteUser(id) {
       if (confirm("are you sure? :(")) {
         const res = axios
