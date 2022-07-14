@@ -14,7 +14,12 @@ Made because I love groceries and convenience.
 - Axios
 
 ### App structure
-u know i love my trees (tbc)
+Frontend (Vue)
+```
+
+Backend (Express + Prisma)
+```
+
 
 ## Wireframe
 Less is more lmao. Feel free to take a look at my drafts:
