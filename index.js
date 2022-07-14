@@ -99,7 +99,7 @@ app.get("/list/:id", async (req, res) => {
 }
 res.send(foodName)
 console.log(foodName)
-})
+});
 
 //* USERS!
 
@@ -175,7 +175,7 @@ const isLoggedIn = (req, res, next) => {
 
 app.get("/authorized", isLoggedIn, (req, res) => {
     res.send(req.session.user)
-})
+});
 
 // UPDATE user adddress info & plans
 app.put("/users/:id", async (req, res) => {
@@ -202,36 +202,7 @@ app.put("/users/:id", async (req, res) => {
 } catch (error) {
   res.send({status: "fail", data: "could not update"})
 }
-})
-
-// retrieve plan info from users
-// app.get("/user/:id", async (req, res) => {
-//   const { id } = req.params; 
-//   // const { plan_id } = req.body;
-//   const retrievePlanID = await prisma.users.findUnique({
-//       where: {
-//                   user_id: Number(id),
-//               },
-//           })
-      
-  
-//   console.log(req.params.id)
-//   console.log(retrievePlanID)
-//   res.send(retrievePlanID)
-
-//   const foodName = []
-//   for (let i = 0; i < retrieveProduceID.length; i ++) {
-//       let produceID  = retrieveProduceID[i].produce_id
-//       // console.log(produceID)
-//       const retrieveProduces = await prisma.produce.findMany({
-//           where: { produce_id: Number(produceID)}
-//   });
-//   foodName.push(retrieveProduces[0])
-//   // res.send(retrieveProduceID)
-// }
-// res.send(foodName)
-// console.log(foodName)
-// });
+});
 
 // DELETE user
 app.delete("/users/:id", async (req, res) => {
@@ -242,7 +213,7 @@ app.delete("/users/:id", async (req, res) => {
     },
   })
   res.send(userToDelete)
-})
+});
 
 // please listen!!!
 app.listen(PORT, () => {

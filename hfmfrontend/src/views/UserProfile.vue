@@ -44,11 +44,6 @@ export default {
       console.log(this.users)
     },
     methods: {
-    async editName(id) {
-      const res = await axios
-      .put(`http://localhost:8000/users/${id}`)
-      then(res => this.users = res.data)
-    },
     deleteUser(id) {
       if (confirm("are you sure? :(")) {
         const res = axios

@@ -27,6 +27,11 @@ export default {
       plans: [],
     };
   },
+  methods: {
+    async addTask(task) {
+      await axios
+    }
+  },
   async created() {
     await axios
       .get(`http://localhost:8000/plans/${this.id}`)
