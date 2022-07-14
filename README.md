@@ -16,10 +16,13 @@ Made because I love groceries and convenience.
 ### App structure
 Frontend (Vue)
 ```
+code
+```
 
 Backend (Express + Prisma)
 ```
-
+code
+```
 
 ## Wireframe
 Less is more lmao. Feel free to take a look at my drafts:
