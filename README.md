@@ -54,15 +54,14 @@ Prisma
 ```
 
 ## Wireframe
-Less is more lmao. Feel free to take a look at my drafts:
-(to be updated)
+My outline will be put here
 
 
 ## WIP
-Things I would like to add at my own time and pace:
-- Recipe section for users to post their own recipes for the things they receive - like their own archive kinda thing
-- Fancy Add to Cart feature with the basket and everything
-
+Things I would like to add at my own time and pace (and maybe use MongoDB instead)
+- Add plans to user database 
+- Create customizable grocery plans
+- Potentially add a checkout and an Add to Cart etc. 
 
 
 
