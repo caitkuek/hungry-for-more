@@ -12,12 +12,20 @@
     <p>Unit no: #{{users.unit_no}} </p>
     <p>Postal code: {{users.postal_code}} </p>
   </div>
-  <div v-else>
+  <div v-else class="edit-form">
+    <div class="edit-address-container">
     <h3> Shipping Address </h3>
-    <p><input v-model="users.street_name" /></p>
-    <p><input v-model="users.unit_no" /></p>
-    <p><input v-model="users.postal_code"/></p>
+    <div class="container">
+    <p><input v-model="users.street_name" placeholder="Street name" /></p>
+    </div>
+    <div class="container">
+    <p><input v-model="users.unit_no" placeholder="Unit no" /></p>
+    </div>
+    <div class="container">
+    <p><input v-model="users.postal_code" placeholder="Postal code"/></p>
+    </div>
     <button @click="updateClick(users.user_id)">Update</button>
+    </div>
   </div>
 </template>
 
@@ -61,6 +69,89 @@ export default {
 .edit {
     max-height: 20px;
     float: right;
-    margin-right: 35px;
+    margin-right: 35x;
+}
+
+.edit-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-address-container {
+    width: 500px;
+    border-radius: 8px;
+    padding: 20px 40px;
+}
+
+.container {
+    position: relative;
+    height: 45px;
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #DADCE0;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+}
+
+button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #5864A0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+button:hover,
+button:focus {
+  background-color: #6871a1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #5864A0;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+  text-decoration: none;
+}
+
+a {
+    text-decoration: none;
 }
 </style>
