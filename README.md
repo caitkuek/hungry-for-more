@@ -62,6 +62,7 @@ Things I would like to add at my own time and pace (and maybe use MongoDB instea
 - Add plans to user database 
 - Create customizable grocery plans
 - Potentially add a checkout and an Add to Cart etc. 
+- Login authentication using JWT/auth0
 
 
 
