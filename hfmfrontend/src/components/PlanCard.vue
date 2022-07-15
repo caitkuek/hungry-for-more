@@ -1,16 +1,18 @@
 <template>
   <div class="plans">
-    <div :key="plans.plan_id" v-for="plan in plans">
+    
+    <div :key="plans.plan_id" v-for="plan in plans" class="container">
       <div class="left">
-      <img class="plan-img" :src="plan.plan_img" />
+      <h3>{{ plan.plan_name }}</h3>
       </div>
       <div class="right">
-      <h3>{{ plan.plan_name }}</h3>
+      <img class="plan-img" :src="plan.plan_img" />
       <h4>estimated cost of ${{ plan.price_per_month }}/month</h4>
       <p>includes: meat, vegetables, fruits and snacks</p>
       <p>purchase every 2-3 weeks</p>
       </div>
       <router-link :to="{ name:'PlanDisplay', params: {id: plan.plan_id} }"><button>More Details</button></router-link>
+      <hr>
     </div>
   </div>
 </template>
@@ -34,6 +36,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  padding-bottom: 20px;
+}
+
 .plans {
   max-height: 100%;
 }
@@ -89,5 +95,9 @@ button:active {
 
 a {
     text-decoration: none;
+}
+
+hr {
+  max-width: 35rem;
 }
 </style>

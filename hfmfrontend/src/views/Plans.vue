@@ -35,7 +35,7 @@ export default {
 
 h2 {
   position: absolute;
-  bottom: 140px;
+  bottom: 250px;
   left: 23rem;
 }
 </style>
