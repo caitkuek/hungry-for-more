@@ -51,9 +51,6 @@ Prisma
 └── seed.js
 ```
 
-## Wireframe
-My outline will be put here
-
 
 ## WIP
 WIP
