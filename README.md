@@ -3,8 +3,6 @@
 ## Overview
 Hungry for More is currently a fixed grocery planning app for users who are too busy to plan their meals in advance. It will eventually be an online grocery app utilizing subscription plans with the intention to reduce waste and save cost for users. 
 
-Made because I love groceries and convenience.
-
 ### Tools and technologies used
 - PostgreSQL 
 - Express
